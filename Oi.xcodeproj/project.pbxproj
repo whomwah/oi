@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE0EDF042227E701000D07D3 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0EDF022227E701000D07D3 /* RemindersViewController.swift */; };
+		AE0EDF052227E701000D07D3 /* RemindersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0EDF032227E701000D07D3 /* RemindersViewController.xib */; };
+		AE263D4622204EE500859725 /* reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE263D4522204EE500859725 /* reminders.swift */; };
+		AE2FB18E221D468B009825D4 /* messageHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2FB18D221D468B009825D4 /* messageHUD.swift */; };
 		AE35B7912216ACB2002B1B4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35B7902216ACB2002B1B4A /* AppDelegate.swift */; };
 		AE35B7932216ACB2002B1B4A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35B7922216ACB2002B1B4A /* ViewController.swift */; };
 		AE35B7952216ACB4002B1B4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE35B7942216ACB4002B1B4A /* Assets.xcassets */; };
 		AE35B7982216ACB4002B1B4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE35B7962216ACB4002B1B4A /* Main.storyboard */; };
-		AE35B7A42216ACB4002B1B4A /* OiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35B7A32216ACB4002B1B4A /* OiTests.swift */; };
-		AE35B7AF2216ACB4002B1B4A /* OiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35B7AE2216ACB4002B1B4A /* OiUITests.swift */; };
+		AEDBCB50222F307C009FF64B /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDBCB4F222F307C009FF64B /* Reminder.swift */; };
+		AEEA174A22283325003500A9 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEA174922283325003500A9 /* EventMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE0EDF022227E701000D07D3 /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
+		AE0EDF032227E701000D07D3 /* RemindersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemindersViewController.xib; sourceTree = "<group>"; };
+		AE263D4522204EE500859725 /* reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reminders.swift; sourceTree = "<group>"; };
+		AE2FB18D221D468B009825D4 /* messageHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = messageHUD.swift; sourceTree = "<group>"; };
 		AE35B78D2216ACB2002B1B4A /* Oi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE35B7902216ACB2002B1B4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE35B7922216ACB2002B1B4A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,11 +49,9 @@
 		AE35B7992216ACB4002B1B4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE35B79A2216ACB4002B1B4A /* Oi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Oi.entitlements; sourceTree = "<group>"; };
 		AE35B79F2216ACB4002B1B4A /* OiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE35B7A32216ACB4002B1B4A /* OiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OiTests.swift; sourceTree = "<group>"; };
-		AE35B7A52216ACB4002B1B4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE35B7AA2216ACB4002B1B4A /* OiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE35B7AE2216ACB4002B1B4A /* OiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OiUITests.swift; sourceTree = "<group>"; };
-		AE35B7B02216ACB4002B1B4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEDBCB4F222F307C009FF64B /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
+		AEEA174922283325003500A9 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,12 +79,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE263D4422204ECA00859725 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				AE263D4522204EE500859725 /* reminders.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		AE2FB18C221D4664009825D4 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				AE2FB18D221D468B009825D4 /* messageHUD.swift */,
+			);
+			path = HUD;
+			sourceTree = "<group>";
+		};
 		AE35B7842216ACB2002B1B4A = {
 			isa = PBXGroup;
 			children = (
 				AE35B78F2216ACB2002B1B4A /* Oi */,
-				AE35B7A22216ACB4002B1B4A /* OiTests */,
-				AE35B7AD2216ACB4002B1B4A /* OiUITests */,
 				AE35B78E2216ACB2002B1B4A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,32 +116,20 @@
 		AE35B78F2216ACB2002B1B4A /* Oi */ = {
 			isa = PBXGroup;
 			children = (
+				AE2FB18C221D4664009825D4 /* HUD */,
+				AE263D4422204ECA00859725 /* Calendar */,
 				AE35B7902216ACB2002B1B4A /* AppDelegate.swift */,
 				AE35B7922216ACB2002B1B4A /* ViewController.swift */,
+				AE0EDF022227E701000D07D3 /* RemindersViewController.swift */,
+				AEDBCB4F222F307C009FF64B /* Reminder.swift */,
+				AEEA174922283325003500A9 /* EventMonitor.swift */,
 				AE35B7942216ACB4002B1B4A /* Assets.xcassets */,
 				AE35B7962216ACB4002B1B4A /* Main.storyboard */,
+				AE0EDF032227E701000D07D3 /* RemindersViewController.xib */,
 				AE35B7992216ACB4002B1B4A /* Info.plist */,
 				AE35B79A2216ACB4002B1B4A /* Oi.entitlements */,
 			);
 			path = Oi;
-			sourceTree = "<group>";
-		};
-		AE35B7A22216ACB4002B1B4A /* OiTests */ = {
-			isa = PBXGroup;
-			children = (
-				AE35B7A32216ACB4002B1B4A /* OiTests.swift */,
-				AE35B7A52216ACB4002B1B4A /* Info.plist */,
-			);
-			path = OiTests;
-			sourceTree = "<group>";
-		};
-		AE35B7AD2216ACB4002B1B4A /* OiUITests */ = {
-			isa = PBXGroup;
-			children = (
-				AE35B7AE2216ACB4002B1B4A /* OiUITests.swift */,
-				AE35B7B02216ACB4002B1B4A /* Info.plist */,
-			);
-			path = OiUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE35B7952216ACB4002B1B4A /* Assets.xcassets in Resources */,
+				AE0EDF052227E701000D07D3 /* RemindersViewController.xib in Resources */,
 				AE35B7982216ACB4002B1B4A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,7 +264,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE35B7932216ACB2002B1B4A /* ViewController.swift in Sources */,
+				AEDBCB50222F307C009FF64B /* Reminder.swift in Sources */,
 				AE35B7912216ACB2002B1B4A /* AppDelegate.swift in Sources */,
+				AE2FB18E221D468B009825D4 /* messageHUD.swift in Sources */,
+				AEEA174A22283325003500A9 /* EventMonitor.swift in Sources */,
+				AE263D4622204EE500859725 /* reminders.swift in Sources */,
+				AE0EDF042227E701000D07D3 /* RemindersViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,7 +277,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE35B7A42216ACB4002B1B4A /* OiTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +284,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE35B7AF2216ACB4002B1B4A /* OiUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,7 +441,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = whomwah.com.Oi;
+				PRODUCT_BUNDLE_IDENTIFIER = com.whomwah.Oi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -447,7 +459,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = whomwah.com.Oi;
+				PRODUCT_BUNDLE_IDENTIFIER = com.whomwah.Oi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
