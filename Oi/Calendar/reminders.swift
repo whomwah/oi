@@ -23,6 +23,11 @@ extension Collection where Index == Int {
 private let Store = EKEventStore()
 
 final class Reminders {
+    
+  static let shared = Reminders()
+    
+  private init() {}
+    
   func requestAccess(completion: @escaping (_ granted: Bool) -> Void) {
     Store.requestAccess(to: .reminder) { granted, _ in
       DispatchQueue.main.async {

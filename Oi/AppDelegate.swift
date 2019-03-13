@@ -14,7 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   
   let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
   let popover = NSPopover()
-  let reminders = Reminders()
+  let reminders = Reminders.shared
   var enablePopupButton = false
   var eventMonitor: EventMonitor?
   

@@ -15,7 +15,7 @@ class RemindersViewController: NSViewController {
     super.viewDidLoad()
     // Do view setup here.
 
-    let reminders = Reminders()
+    let reminders = Reminders.shared
     reminders.requestAccess { granted in
       if granted {
         reminders.fetchAndPopulate(arrayController: self.reminderAC)
