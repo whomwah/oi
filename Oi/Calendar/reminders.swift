@@ -43,7 +43,8 @@ final class Reminders {
           
           let rem = Reminder(
             title: reminder.title,
-            dueDate: reminder.dueDateComponents!
+            dueDate: reminder.dueDateComponents!,
+            calendarItemIdentifier: reminder.calendarItemIdentifier
           )
           
           print(i, rem.title)
@@ -54,6 +55,19 @@ final class Reminders {
       
       semaphore.wait()
     }
+  }
+  
+  func listenForChanges() {
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(Reminders.onDidReceiveData(_:)),
+      name: .EKEventStoreChanged,
+      object: Store
+    )
+  }
+  
+  @objc func onDidReceiveData(_ notification: Notification) {
+    print("An reminder has changed!")
   }
   
   // MARK: - Private functions

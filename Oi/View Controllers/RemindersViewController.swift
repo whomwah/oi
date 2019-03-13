@@ -14,7 +14,7 @@ class RemindersViewController: NSViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do view setup here.
-    
+
     let reminders = Reminders()
     reminders.requestAccess { granted in
       if granted {
@@ -35,6 +35,14 @@ extension RemindersViewController {
       menu.addItem(NSMenuItem(title: "Quit Oi", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
       
       NSMenu.popUpContextMenu(menu, with: event, for: sender)
+    }
+  }
+  
+  @IBAction func reminderClicked(_ sender: NSButton) {
+    for reminder in self.reminderAC!.arrangedObjects as! [Reminder] {
+      if reminder.calendarItemIdentifier == sender.title {
+        print("Clicked: \(sender.state) \(reminder.title)")
+      }
     }
   }
 }

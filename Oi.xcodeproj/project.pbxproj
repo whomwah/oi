@@ -87,12 +87,12 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
-		AE2FB18C221D4664009825D4 /* HUD */ = {
+		AE2FB18C221D4664009825D4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				AE2FB18D221D468B009825D4 /* messageHUD.swift */,
 			);
-			path = HUD;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		AE35B7842216ACB2002B1B4A = {
@@ -116,20 +116,52 @@
 		AE35B78F2216ACB2002B1B4A /* Oi */ = {
 			isa = PBXGroup;
 			children = (
-				AE2FB18C221D4664009825D4 /* HUD */,
-				AE263D4422204ECA00859725 /* Calendar */,
 				AE35B7902216ACB2002B1B4A /* AppDelegate.swift */,
+				AEADF5432232BA6400DAE905 /* Supporting Files */,
+				AEADF5422232BA4F00DAE905 /* Models */,
+				AEADF5412232BA2900DAE905 /* View Controllers */,
+				AE2FB18C221D4664009825D4 /* Views */,
+				AE263D4422204ECA00859725 /* Calendar */,
+				AEADF5442232BAA300DAE905 /* Events */,
+				AE35B7962216ACB4002B1B4A /* Main.storyboard */,
+				AE35B7942216ACB4002B1B4A /* Assets.xcassets */,
+			);
+			path = Oi;
+			sourceTree = "<group>";
+		};
+		AEADF5412232BA2900DAE905 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				AE35B7922216ACB2002B1B4A /* ViewController.swift */,
 				AE0EDF022227E701000D07D3 /* RemindersViewController.swift */,
-				AEDBCB4F222F307C009FF64B /* Reminder.swift */,
-				AEEA174922283325003500A9 /* EventMonitor.swift */,
-				AE35B7942216ACB4002B1B4A /* Assets.xcassets */,
-				AE35B7962216ACB4002B1B4A /* Main.storyboard */,
 				AE0EDF032227E701000D07D3 /* RemindersViewController.xib */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		AEADF5422232BA4F00DAE905 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AEDBCB4F222F307C009FF64B /* Reminder.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AEADF5432232BA6400DAE905 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				AE35B7992216ACB4002B1B4A /* Info.plist */,
 				AE35B79A2216ACB4002B1B4A /* Oi.entitlements */,
 			);
-			path = Oi;
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AEADF5442232BAA300DAE905 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				AEEA174922283325003500A9 /* EventMonitor.swift */,
+			);
+			path = Events;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +232,11 @@
 				TargetAttributes = {
 					AE35B78C2216ACB2002B1B4A = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					AE35B79E2216ACB4002B1B4A = {
 						CreatedOnToolsVersion = 10.1;
@@ -433,10 +470,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Oi/Oi.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Oi/Supporting Files/Oi.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = Oi/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Oi/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -451,10 +488,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Oi/Oi.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Oi/Supporting Files/Oi.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = Oi/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Oi/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
