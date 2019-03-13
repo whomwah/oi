@@ -1,5 +1,5 @@
 //
-//  reminders.swift
+//  OiRemindersStore.swift
 //  Oi
 //
 //  Created by Duncan Robertson on 22/02/2019.
@@ -20,16 +20,25 @@ extension Collection where Index == Int {
   }
 }
 
-private let Store = EKEventStore()
-
-final class Reminders {
+final class OiRemindersStore: NSObject {
+  var eventStore: EKEventStore
     
-  static let shared = Reminders()
+  static let shared = OiRemindersStore()
+  
+  private override init() {
+    eventStore = EKEventStore()
+    super.init()
     
-  private init() {}
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(OiRemindersStore.onDidReceiveData(_:)),
+      name: NSNotification.Name.EKEventStoreChanged,
+      object: eventStore
+    )
+  }
     
   func requestAccess(completion: @escaping (_ granted: Bool) -> Void) {
-    Store.requestAccess(to: .reminder) { granted, _ in
+    self.eventStore.requestAccess(to: .reminder) { granted, _ in
       DispatchQueue.main.async {
         completion(granted)
       }
@@ -37,6 +46,8 @@ final class Reminders {
   }
   
   func fetchAndPopulate(arrayController: NSArrayController) {
+    arrayController.content = nil // nuke everything !!!
+    
     let Reminderlists = self.getRemindLists()
     
     for reminderList in Reminderlists {
@@ -62,17 +73,10 @@ final class Reminders {
     }
   }
   
-  func listenForChanges() {
-    NotificationCenter.default.addObserver(
-      self,
-      selector: #selector(Reminders.onDidReceiveData(_:)),
-      name: .EKEventStoreChanged,
-      object: Store
-    )
-  }
-  
   @objc func onDidReceiveData(_ notification: Notification) {
-    print("An reminder has changed!")
+    DispatchQueue.main.async {
+      NotificationCenter.default.post(name: Notification.Name(OiRefreshDataNotification), object: self)
+    }
   }
   
   // MARK: - Private functions
@@ -80,12 +84,13 @@ final class Reminders {
   private func reminders(onCalendar calendar: EKCalendar,
                          completion: @escaping (_ reminders: [EKReminder]) -> Void)
   {
-    let predicate = Store.predicateForReminders(in: [calendar])
-    Store.fetchReminders(matching: predicate) { reminders in
-      let reminders = reminders?
-        .filter { !$0.isCompleted }
-        .filter { ($0.dueDateComponents != nil) }
-        .sorted { ($0.creationDate ?? Date.distantPast) < ($1.creationDate ?? Date.distantPast) }
+    let predicate = self.eventStore.predicateForIncompleteReminders(
+      withDueDateStarting: Date(),
+      ending: Calendar.current.date(byAdding: .day, value: 7, to: Date()),
+      calendars: [calendar]
+    )
+    
+    self.eventStore.fetchReminders(matching: predicate) {reminders in
       completion(reminders ?? [])
     }
   }
@@ -100,7 +105,7 @@ final class Reminders {
   }
   
   private func getRemindLists() -> [EKCalendar] {
-    return Store.calendars(for: .reminder)
+    return self.eventStore.calendars(for: .reminder)
       .filter { $0.allowsContentModifications }
   }
 }

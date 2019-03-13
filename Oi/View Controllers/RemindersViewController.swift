@@ -11,15 +11,44 @@ import Cocoa
 class RemindersViewController: NSViewController {
   @IBOutlet var reminderAC: NSArrayController!
   
+  var rsObservers: [AnyObject] = []
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do view setup here.
+    let mainQueue = OperationQueue.main
+    let center = NotificationCenter.default
 
-    let reminders = Reminders.shared
+    let reminders = OiRemindersStore.shared
     reminders.requestAccess { granted in
       if granted {
         reminders.fetchAndPopulate(arrayController: self.reminderAC)
       }
+    }
+    
+    let refreshData = center.addObserver(
+      forName: NSNotification.Name(OiRefreshDataNotification),
+      object: reminders,
+      queue: mainQueue
+    ) {[weak self] note in
+      self?.handleOiRefreshDataNotification(note)
+    }
+    
+    self.rsObservers = [refreshData]
+  }
+  
+  private func handleOiRefreshDataNotification(_ notification: Notification) {
+    print("Something changed: \(notification)")
+    OiRemindersStore.shared.fetchAndPopulate(arrayController: self.reminderAC)
+  }
+  
+  //MARK: - Memory Management
+  
+
+  deinit {
+    // Unregister for all observers saved in rsObservers
+    for anObserver in self.rsObservers {
+      NotificationCenter.default.removeObserver(anObserver)
     }
   }
 }

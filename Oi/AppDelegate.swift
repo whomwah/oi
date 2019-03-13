@@ -14,7 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   
   let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
   let popover = NSPopover()
-  let reminders = Reminders.shared
+  let reminders = OiRemindersStore.shared
   var enablePopupButton = false
   var eventMonitor: EventMonitor?
   
@@ -32,6 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     reminders.requestAccess { granted in
       if granted {
         self.enablePopupButton = true
+        
         print("You have reminders access")
       } else {
         print("You need to grant reminders access")
