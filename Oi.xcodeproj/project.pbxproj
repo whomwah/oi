@@ -15,6 +15,7 @@
 		AE35B7932216ACB2002B1B4A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35B7922216ACB2002B1B4A /* ViewController.swift */; };
 		AE35B7952216ACB4002B1B4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE35B7942216ACB4002B1B4A /* Assets.xcassets */; };
 		AE35B7982216ACB4002B1B4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE35B7962216ACB4002B1B4A /* Main.storyboard */; };
+		AE5FB6FD2239448300902476 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AE5FB6FC2239448300902476 /* README.md */; };
 		AEDBCB50222F307C009FF64B /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDBCB4F222F307C009FF64B /* Reminder.swift */; };
 		AEEA174A22283325003500A9 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEA174922283325003500A9 /* EventMonitor.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		AE35B79A2216ACB4002B1B4A /* Oi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Oi.entitlements; sourceTree = "<group>"; };
 		AE35B79F2216ACB4002B1B4A /* OiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE35B7AA2216ACB4002B1B4A /* OiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE5FB6FC2239448300902476 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AEDBCB4F222F307C009FF64B /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		AEEA174922283325003500A9 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +100,7 @@
 		AE35B7842216ACB2002B1B4A = {
 			isa = PBXGroup;
 			children = (
+				AE5FB6FC2239448300902476 /* README.md */,
 				AE35B78F2216ACB2002B1B4A /* Oi */,
 				AE35B78E2216ACB2002B1B4A /* Products */,
 			);
@@ -275,6 +278,7 @@
 			files = (
 				AE35B7952216ACB4002B1B4A /* Assets.xcassets in Resources */,
 				AE0EDF052227E701000D07D3 /* RemindersViewController.xib in Resources */,
+				AE5FB6FD2239448300902476 /* README.md in Resources */,
 				AE35B7982216ACB4002B1B4A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
