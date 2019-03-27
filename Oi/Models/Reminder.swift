@@ -14,8 +14,8 @@ class Reminder: NSObject {
   @objc var dueDate: DateComponents
   @objc var calendarItemIdentifier: String
   
-  init(title: String, dueDate: DateComponents, calendarItemIdentifier: String) {
-    self.enabled = false
+  init(enabled: Bool, title: String, dueDate: DateComponents, calendarItemIdentifier: String) {
+    self.enabled = enabled
     self.title = title
     self.calendarItemIdentifier = calendarItemIdentifier
     self.dueDate = dueDate
