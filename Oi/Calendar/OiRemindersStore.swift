@@ -8,18 +8,6 @@
 
 import EventKit
 
-extension Collection {
-  func find(where predicate: (Iterator.Element) throws -> Bool) rethrows -> Iterator.Element? {
-    return try self.index(where: predicate).flatMap { self[$0] }
-  }
-}
-
-extension Collection where Index == Int {
-  subscript(safe index: Int) -> Iterator.Element? {
-    return index < self.count && index >= 0 ? self[index] : nil
-  }
-}
-
 final class OiRemindersStore: NSObject {
   var eventStore: EKEventStore
     
@@ -36,6 +24,7 @@ final class OiRemindersStore: NSObject {
       object: eventStore
     )
   }
+  
     
   func requestAccess(completion: @escaping (_ granted: Bool) -> Void) {
     self.eventStore.requestAccess(to: .reminder) { granted, _ in
@@ -45,31 +34,35 @@ final class OiRemindersStore: NSObject {
     }
   }
   
-  func fetchAndPopulate(arrayController: NSArrayController) {
-    arrayController.content = nil // nuke everything !!!
-    
-    let Reminderlists = self.getRemindLists()
+  func fetchAndPopulate(arrayController: RemindersArrayController) {    
+    let Reminderlists = getRemindLists()
+    let semaphore = DispatchSemaphore(value: 0)
     
     for reminderList in Reminderlists {
-      let semaphore = DispatchSemaphore(value: 0)
       let calendar = self.calendar(withName: reminderList.title)
-
-      self.reminders(onCalendar: calendar) { reminders in
-        for (i, reminder) in reminders.enumerated() {
-          
+      
+      self.reminders(onCalendar: calendar) { reminders in        
+        for (_, reminder) in reminders.enumerated() {
           let rem = Reminder(
+            enabled: arrayController.storedCalendarIDExists(reminder.calendarItemIdentifier) ? true : false,
             title: reminder.title,
             dueDate: reminder.dueDateComponents!,
             calendarItemIdentifier: reminder.calendarItemIdentifier
           )
           
-          print(i, rem.title)
           arrayController.addObject(rem)
         }
         semaphore.signal()
       }
       
       semaphore.wait()
+    }
+    
+    DispatchQueue.main.async {
+      NotificationCenter.default.post(
+        name: Notification.Name(OiActiveCalenderIDsNotification),
+        object: self
+      )
     }
   }
   
@@ -84,19 +77,19 @@ final class OiRemindersStore: NSObject {
   private func reminders(onCalendar calendar: EKCalendar,
                          completion: @escaping (_ reminders: [EKReminder]) -> Void)
   {
-    let predicate = self.eventStore.predicateForIncompleteReminders(
+    let predicate = eventStore.predicateForIncompleteReminders(
       withDueDateStarting: Date(),
       ending: Calendar.current.date(byAdding: .day, value: 7, to: Date()),
       calendars: [calendar]
     )
     
-    self.eventStore.fetchReminders(matching: predicate) {reminders in
+    eventStore.fetchReminders(matching: predicate) {reminders in
       completion(reminders ?? [])
     }
   }
   
   private func calendar(withName name: String) -> EKCalendar {
-    if let calendar = self.getRemindLists().find(where: { $0.title.lowercased() == name.lowercased() }) {
+    if let calendar = getRemindLists().find(where: { $0.title.lowercased() == name.lowercased() }) {
       return calendar
     } else {
       print("No reminders list matching \(name)")
@@ -105,7 +98,6 @@ final class OiRemindersStore: NSObject {
   }
   
   private func getRemindLists() -> [EKCalendar] {
-    return self.eventStore.calendars(for: .reminder)
-      .filter { $0.allowsContentModifications }
+    return eventStore.calendars(for: .reminder).filter { $0.allowsContentModifications }
   }
 }

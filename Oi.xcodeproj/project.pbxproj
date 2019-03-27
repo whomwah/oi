@@ -16,7 +16,9 @@
 		AE35B7952216ACB4002B1B4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE35B7942216ACB4002B1B4A /* Assets.xcassets */; };
 		AE35B7982216ACB4002B1B4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE35B7962216ACB4002B1B4A /* Main.storyboard */; };
 		AE5FB6FD2239448300902476 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AE5FB6FC2239448300902476 /* README.md */; };
+		AE6C275D2244F0A600272FAD /* RemindersArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6C275C2244F0A600272FAD /* RemindersArrayController.swift */; };
 		AE7F757222396B9D00FDF541 /* OiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F757122396B9D00FDF541 /* OiConstants.swift */; };
+		AECF9B01224BD133005806A1 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECF9B00224BD133005806A1 /* extensions.swift */; };
 		AEDBCB50222F307C009FF64B /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDBCB4F222F307C009FF64B /* Reminder.swift */; };
 		AEEA174A22283325003500A9 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEA174922283325003500A9 /* EventMonitor.swift */; };
 /* End PBXBuildFile section */
@@ -53,7 +55,9 @@
 		AE35B79F2216ACB4002B1B4A /* OiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE35B7AA2216ACB4002B1B4A /* OiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5FB6FC2239448300902476 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		AE6C275C2244F0A600272FAD /* RemindersArrayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersArrayController.swift; sourceTree = "<group>"; };
 		AE7F757122396B9D00FDF541 /* OiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OiConstants.swift; sourceTree = "<group>"; };
+		AECF9B00224BD133005806A1 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		AEDBCB4F222F307C009FF64B /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		AEEA174922283325003500A9 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,10 +126,11 @@
 		AE35B78F2216ACB2002B1B4A /* Oi */ = {
 			isa = PBXGroup;
 			children = (
+				AECF9AFF224BD123005806A1 /* Extensions */,
 				AE35B7902216ACB2002B1B4A /* AppDelegate.swift */,
 				AEADF5432232BA6400DAE905 /* Supporting Files */,
 				AEADF5422232BA4F00DAE905 /* Models */,
-				AEADF5412232BA2900DAE905 /* View Controllers */,
+				AEADF5412232BA2900DAE905 /* Controllers */,
 				AE2FB18C221D4664009825D4 /* Views */,
 				AE263D4422204ECA00859725 /* Calendar */,
 				AEADF5442232BAA300DAE905 /* Events */,
@@ -135,14 +140,15 @@
 			path = Oi;
 			sourceTree = "<group>";
 		};
-		AEADF5412232BA2900DAE905 /* View Controllers */ = {
+		AEADF5412232BA2900DAE905 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				AE35B7922216ACB2002B1B4A /* ViewController.swift */,
 				AE0EDF022227E701000D07D3 /* RemindersViewController.swift */,
 				AE0EDF032227E701000D07D3 /* RemindersViewController.xib */,
+				AE6C275C2244F0A600272FAD /* RemindersArrayController.swift */,
 			);
-			path = "View Controllers";
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		AEADF5422232BA4F00DAE905 /* Models */ = {
@@ -168,6 +174,14 @@
 				AEEA174922283325003500A9 /* EventMonitor.swift */,
 			);
 			path = Events;
+			sourceTree = "<group>";
+		};
+		AECF9AFF224BD123005806A1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AECF9B00224BD133005806A1 /* extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,8 +326,10 @@
 				AE35B7912216ACB2002B1B4A /* AppDelegate.swift in Sources */,
 				AE2FB18E221D468B009825D4 /* messageHUD.swift in Sources */,
 				AEEA174A22283325003500A9 /* EventMonitor.swift in Sources */,
+				AECF9B01224BD133005806A1 /* extensions.swift in Sources */,
 				AE263D4622204EE500859725 /* OiRemindersStore.swift in Sources */,
 				AE0EDF042227E701000D07D3 /* RemindersViewController.swift in Sources */,
+				AE6C275D2244F0A600272FAD /* RemindersArrayController.swift in Sources */,
 				AE7F757222396B9D00FDF541 /* OiConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

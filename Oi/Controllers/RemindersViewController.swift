@@ -9,7 +9,7 @@
 import Cocoa
 
 class RemindersViewController: NSViewController {
-  @IBOutlet var reminderAC: NSArrayController!
+  @IBOutlet var reminderAC: RemindersArrayController!
   
   var rsObservers: [AnyObject] = []
   
@@ -34,22 +34,35 @@ class RemindersViewController: NSViewController {
       self?.handleOiRefreshDataNotification(note)
     }
     
-    self.rsObservers = [refreshData]
+    let latestCalendarIDs = center.addObserver(
+      forName: NSNotification.Name(OiActiveCalenderIDsNotification),
+      object: reminders,
+      queue: mainQueue
+    ) {[weak self] note in
+      self?.handleOiActiveCalenderIDsNotification(note)
+    }
+    
+    self.rsObservers = [refreshData, latestCalendarIDs]
   }
   
-  private func handleOiRefreshDataNotification(_ notification: Notification) {
-    print("Something changed: \(notification)")
-    OiRemindersStore.shared.fetchAndPopulate(arrayController: self.reminderAC)
-  }
-  
-  //MARK: - Memory Management
-  
-
   deinit {
     // Unregister for all observers saved in rsObservers
     for anObserver in self.rsObservers {
       NotificationCenter.default.removeObserver(anObserver)
     }
+  }
+}
+
+// MARK: Notification handlers
+
+extension RemindersViewController {
+  private func handleOiRefreshDataNotification(_ notification: Notification) {
+    reminderAC.content = nil
+    OiRemindersStore.shared.fetchAndPopulate(arrayController: reminderAC)
+  }
+  
+  private func handleOiActiveCalenderIDsNotification(_ notification: Notification) {
+    reminderAC.syncStoredCalendarIDs()
   }
 }
 
@@ -68,16 +81,21 @@ extension RemindersViewController {
   }
   
   @IBAction func reminderClicked(_ sender: NSButton) {
-    for reminder in self.reminderAC!.arrangedObjects as! [Reminder] {
+    for reminder in reminderAC!.arrangedObjects as! [Reminder] {
       if reminder.calendarItemIdentifier == sender.title {
-        print("Clicked: \(sender.state) \(reminder.title)")
+        if (sender.state == NSControl.StateValue.on) {
+          reminderAC.addReminder(reminder.calendarItemIdentifier)
+        } else {
+          reminderAC.removeReminder(reminder.calendarItemIdentifier)
+        }
       }
     }
   }
 }
 
+// MARK: Storyboard instantiation
+
 extension RemindersViewController {
-  // MARK: Storyboard instantiation
   static func freshController() -> RemindersViewController {
     let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
     let identifier = NSStoryboard.SceneIdentifier("RemindersViewController")

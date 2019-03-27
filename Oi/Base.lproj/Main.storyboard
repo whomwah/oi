@@ -877,7 +877,7 @@
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <arrayController objectClassName="Reminder" id="8cg-V3-mi1"/>
+                <arrayController objectClassName="Reminder" id="8cg-V3-mi1" customClass="RemindersArrayController" customModule="Oi" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="75" y="682"/>
         </scene>
