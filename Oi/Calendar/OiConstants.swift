@@ -8,4 +8,6 @@
 
 //MARK: - OiRemindersStore.swift
 
+let OiUserDefaultsStorageKey = "OiUserDefaultsStorageKey" // key used to persist reminders
 let OiRefreshDataNotification = "OiRefreshDataNotification" // Sent mac reminders have been changed
+let OiActiveCalenderIDsNotification = "OiActiveCalenderIDsNotification" // active IDs when freshly fetched
